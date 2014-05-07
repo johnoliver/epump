@@ -9,14 +9,14 @@ import java.util.logging.Logger;
 /**
  * Crude implementation of a class that will pump events to all registered SinkPoints.
  */
-public class EventPump implements Runnable {
+public class EventPump<E extends SinkPoint> implements Runnable {
 
     private static AtomicInteger threadId= new AtomicInteger(0);
 
     private final static Logger LOGGER = Logger.getLogger(EventPump.class.getName());
 
 
-    private Map<SinkPoint,CallBack> callBacks = new ConcurrentHashMap<>();
+    private Map<E,CallBack> callBacks = new ConcurrentHashMap<>();
     private Map<SinkPoint,Throwable> errors = new ConcurrentHashMap<>();
     private EventSource eventSource;
     private Thread pump;
@@ -25,10 +25,10 @@ public class EventPump implements Runnable {
     public EventPump( EventSource source) {
         this.eventSource = source;
     }
-    public void registerSinkPoint( SinkPoint sinkPoint) {
+    public void registerSinkPoint( E sinkPoint) {
         this.callBacks.put(sinkPoint, new CallBack(sinkPoint));
     }
-    public void unregisterCallBack( SinkPoint sinkPoint) {
+    public void unregisterCallBack( E sinkPoint) {
         this.callBacks.remove(sinkPoint);
     }
 
