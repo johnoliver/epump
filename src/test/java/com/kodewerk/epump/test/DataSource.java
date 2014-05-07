@@ -10,7 +10,11 @@ public class DataSource implements EventSource {
 
     public boolean endOfStream() { return ( intCount == 10) && (doubleCount == 10); }
 
-    public Event read() {
+    public Event<Query> read() {
+
+        // Not possible
+        //return new LongEvent(intCount++);
+
         if ( intCount == doubleCount)
             return new IntegerEvent(intCount++);
         else {

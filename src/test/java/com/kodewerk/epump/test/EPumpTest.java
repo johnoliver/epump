@@ -23,7 +23,7 @@ public class EPumpTest {
         pump.registerSinkPoint(doubleSumQuery);
         pump.registerSinkPoint(integerSumQuery);
         //Can't be done
-        //pump.registerSinkPoint(longSumQuery);
+        pump.registerSinkPoint(longSumQuery);
         pump.start();
         pump.waitForClosing();
         assertTrue( doubleSumQuery.toString().equals("22.5"));

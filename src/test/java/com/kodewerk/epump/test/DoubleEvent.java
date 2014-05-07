@@ -1,9 +1,8 @@
 package com.kodewerk.epump.test;
 
 import com.kodewerk.epump.Event;
-import com.kodewerk.epump.SinkPoint;
 
-public class DoubleEvent implements Event {
+public class DoubleEvent implements Event<Query> {
 
     private double value;
 
@@ -13,12 +12,8 @@ public class DoubleEvent implements Event {
 
     public double getValue() { return value; }
 
-    public void execute(Query query) {
-        query.processEvent(this);
-    }
-
     @Override
-    public void writeTo(SinkPoint sinkPoint) {
-        this.execute((Query)sinkPoint);
+    public void writeTo(Query sinkPoint) {
+        sinkPoint.processEvent(this);
     }
 }

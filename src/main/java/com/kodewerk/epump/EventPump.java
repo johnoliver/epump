@@ -25,7 +25,7 @@ public class EventPump<E extends SinkPoint> implements Runnable {
     public EventPump( EventSource source) {
         this.eventSource = source;
     }
-    public void registerSinkPoint( E sinkPoint) {
+    public void registerSinkPoint(E sinkPoint) {
         this.callBacks.put(sinkPoint, new CallBack(sinkPoint));
     }
     public void unregisterCallBack( E sinkPoint) {

@@ -1,10 +1,9 @@
 package com.kodewerk.epump.test;
 
 import com.kodewerk.epump.Event;
-import com.kodewerk.epump.SinkPoint;
 
 
-public class LongSumQuery implements SinkPoint {
+public class LongSumQuery extends Query {
 
     private long sum = 0;
 
@@ -13,7 +12,7 @@ public class LongSumQuery implements SinkPoint {
     }
 
     @Override
-    public void accept(Event event) {
+    public void accept(Event<Query> event) {
         event.writeTo(this);
     }
 

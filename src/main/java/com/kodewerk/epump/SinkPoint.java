@@ -9,7 +9,7 @@ package com.kodewerk.epump;
  * kill the main event pump loop.
  *
  */
-public interface SinkPoint {
+public interface SinkPoint<S extends SinkPoint> {
 
-    public void accept(Event event);
+    public void accept(Event<S> event);
 }

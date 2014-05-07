@@ -15,7 +15,7 @@ public class DoubleSumQuery extends Query {
     }
 
     @Override
-    public void accept(Event event) {
+    public void accept(Event<Query> event) {
         event.writeTo(this);
     }
 }

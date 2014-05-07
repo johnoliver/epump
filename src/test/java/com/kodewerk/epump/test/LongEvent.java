@@ -3,7 +3,7 @@ package com.kodewerk.epump.test;
 import com.kodewerk.epump.Event;
 import com.kodewerk.epump.SinkPoint;
 
-public class LongEvent implements Event {
+public class LongEvent implements Event<LongSumQuery> {
 
     private long value;
 
@@ -17,7 +17,8 @@ public class LongEvent implements Event {
         query.processEvent(this);
     }
 
-    public void writeTo(SinkPoint sinkPoint) {
-        this.execute((LongSumQuery) sinkPoint);
+    @Override
+    public void writeTo(LongSumQuery sinkPoint) {
+        this.execute(sinkPoint);
     }
 }

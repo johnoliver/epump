@@ -1,7 +1,7 @@
 package com.kodewerk.epump;
 
-public interface Event {
+public interface Event<T extends SinkPoint> {
 
-    public void writeTo(SinkPoint sinkPoint);
+    public void writeTo(T sinkPoint);
 
 }
