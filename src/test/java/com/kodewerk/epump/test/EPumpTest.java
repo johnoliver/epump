@@ -18,9 +18,11 @@ public class EPumpTest {
     public void queriesProduceExpectedResults() throws IOException {
         DoubleSumQuery doubleSumQuery = new DoubleSumQuery();
         IntegerSumQuery integerSumQuery = new IntegerSumQuery();
+        LongSumQuery longSumQuery = new LongSumQuery();
         EventPump pump = new EventPump(new DataSource());
         pump.registerSinkPoint(doubleSumQuery);
         pump.registerSinkPoint(integerSumQuery);
+        pump.registerSinkPoint(longSumQuery);
         pump.start();
         pump.waitForClosing();
         assertTrue( doubleSumQuery.toString().equals("22.5"));
