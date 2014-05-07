@@ -10,7 +10,7 @@ final public class CallBack<T extends SinkPoint> {
     public SinkPoint getSinkPoint() { return this.sink; }
 
     void callBack(Event event) {
-        sink.accept( event);
+       event.writeTo(sink);
     }
 
     //todo: isolate the pump from unknown client behaviour with a guard thread.

@@ -3,17 +3,13 @@ package com.kodewerk.epump.test;
 
 import com.kodewerk.epump.Event;
 
-public class ThrowsDivideByZeroQuery extends Query {
+public class ThrowsDivideByZeroQuery extends Query<IntegerEvent> {
 
     private int sum = 0;
 
-    public void processEvent(IntegerEvent event) {
-        sum += event.getValue() / sum;
-    }
-
     @Override
-    public void accept(Event event) {
-        event.writeTo(this);
+    public void accept(IntegerEvent event) {
+        sum += event.getValue() / sum;
     }
 
     public String toString() {
